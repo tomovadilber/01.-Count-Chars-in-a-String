@@ -1,0 +1,40 @@
+using System;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Collections.Generic;
+using System.Collections;
+
+
+namespace AssociativeArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<string> input = Console.ReadLine().Split(' ',StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            Dictionary<char, int> result = new Dictionary<char, int>();
+
+            foreach (string item in input)
+            {
+                foreach (char ch in item)
+                {
+                    if (result.ContainsKey(ch))
+                    {
+                        result[ch]++;
+                    }
+                    else
+                    {
+                        result.Add(ch, 1);
+                    }
+                }
+            }
+
+            foreach (var item in result)
+            {
+                Console.WriteLine($"{item.Key} -> {item.Value}");
+            }
+        }
+    }
+}
